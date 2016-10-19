@@ -1,0 +1,46 @@
+#mapid {
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+body {
+    font: 13px/20px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+    color: #404040;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+
+footer {
+    /*border-top: 2px dashed #404040;*/
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 5px;
+}
+
+#waypoints {
+    font: 13px/20px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+    height: 100px;
+    width: 100%;
+}
+
+.about {
+    color: white;
+    margin: 0px auto;
+    height: 300px;
+    width: 400px;
+    border-radius: 5px;
+    background: #fafafa;
+    /* background-image: linear-gradient(to bottom, #fafafa, #e1e1e1); */
+    background-image: url("../media/hubble-spire.jpg");
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.1);
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: 100;
+}

@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Optimize mobile viewport -->
+    <title>Open Street Maps</title>
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="style/main.css" />
+
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+  </head>
+  
+  <body>
+    <div class="row">
+      <div class="col-md-2 menu">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+	      <strong>Opções</strong>
+	    </h3>
+	  </div>
+	  <div class="panel-body">
+	    <div class="form-group">
+	      <div class="input-group">
+		<input id="address" type="text" class="form-control" aria-describedby="basic-addon1" value="Curitiba, PR">
+	      </div>
+	      <input class="btn btn-primary btn-sm" type="button" value="Localizar" onclick="codeAddress()">
+	      <h4>Localização</h4>
+	      <div class="input-group">
+		<input type="text" class="form-control" placeholder="Latitude" aria-describedby="basic-addon1">
+	      </div>
+	      <div class="input-group">
+		<input type="text" class="form-control" placeholder="Longitude" aria-describedby="basic-addon1">
+	      </div>
+
+	      <h4>Marcadores</h4>
+	      <input class="btn btn-primary btn-xs" type="button" value="Traçar rota" onclick="traceRoute()">
+	      <label for="sizing-addon3">Distância total</label>
+	      <div class="input-group input-group-sm">
+		<input id="distance" type="text" class="form-control" placeholder="0" aria-describedby="sizing-addon3" readonly="readonly">
+		<span class="input-group-addon" id="sizing-addon3">m</span>
+	      </div>
+	      
+	      <h4>Circles</h4>
+	      <div class="input-group">
+		<input id="radius" value="20" type="text" class="form-control" aria-describedby="basic-addon1" value="Curitiba, PR">
+	      </div>
+
+	      <!-- <input type="button" value="Show" onclick="drawCircles()"> -->
+	      <input id="hb1" type="button" value="Hide">
+	    </div>
+	  </div>
+	</div>
+      </div>
+	
+      
+      <div class="col-md-10">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+	      <strong>Mapa</strong>
+	    </h3>
+	  </div>
+	  <div class="panel-body">
+	    <div id="mapid"></div>
+	  </div>
+	</div>
+
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+	      <strong>Waypoints</strong>
+	    </h3>
+	  </div>
+	  <div class="panel-body">
+	    <div class="form">
+	      <textarea id="waypoints" disabled="disabled"></textarea>
+	    </div>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+
+    <footer>
+      <span style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); display: inline-block;">
+	©</span>
+      copyleft 2016 <a href="http://cacildis.no-ip.biz">cacildis</a> HC
+    </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- booststrap minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <script src="scripts/map.js"></script>
+    <script src="scripts/core.js"></script>
+	
+  </body>
+</html>
