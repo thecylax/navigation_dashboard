@@ -28,7 +28,8 @@
 	      <div class="input-group">
 		<input id="address" type="text" class="form-control" aria-describedby="basic-addon1" value="Curitiba, PR">
 	      </div>
-	      <input class="btn btn-primary btn-sm" type="button" value="Localizar" onclick="codeAddress()">
+	      <input class="btn btn-primary btn-xs" type="button" value="Localizar" onclick="codeAddress()">
+	      <hr>
 	      <h4>Localização</h4>
 	      <div class="input-group">
 		<input type="text" class="form-control" placeholder="Latitude" aria-describedby="basic-addon1">
@@ -36,22 +37,23 @@
 	      <div class="input-group">
 		<input type="text" class="form-control" placeholder="Longitude" aria-describedby="basic-addon1">
 	      </div>
-
-	      <h4>Marcadores</h4>
+	      <hr>
+	      <h4>Marcadores <span id="markscount" class="badge"></span></h4>
 	      <input class="btn btn-primary btn-xs" type="button" value="Traçar rota" onclick="traceRoute()">
+	      <br>
 	      <label for="sizing-addon3">Distância total</label>
 	      <div class="input-group input-group-sm">
 		<input id="distance" type="text" class="form-control" placeholder="0" aria-describedby="sizing-addon3" readonly="readonly">
 		<span class="input-group-addon" id="sizing-addon3">m</span>
 	      </div>
 	      
-	      <h4>Circles</h4>
-	      <div class="input-group">
-		<input id="radius" value="20" type="text" class="form-control" aria-describedby="basic-addon1" value="Curitiba, PR">
-	      </div>
+	      <!-- <h4>Circles</h4> -->
+	      <!-- <div class="input-group"> -->
+	      <!-- 	<input id="radius" value="20" type="text" class="form-control" aria-describedby="basic-addon1" value="Curitiba, PR"> -->
+	      <!-- </div> -->
 
 	      <!-- <input type="button" value="Show" onclick="drawCircles()"> -->
-	      <input id="hb1" type="button" value="Hide">
+	      <!-- <input id="hb1" type="button" value="Hide"> -->
 	    </div>
 	  </div>
 	</div>
