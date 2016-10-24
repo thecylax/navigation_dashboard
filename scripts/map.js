@@ -3,6 +3,8 @@ var count = 0;
 var markers = [];
 var totalDistance = 0;
 var centralLatLng = [-25.432, -49.247] // Curitiba
+var routes = [];
+var header = 'wp\tlatitude\t\t\t\tlongitude\n'
 
 // mapbox specific vars
 var mapboxToken = 'pk.eyJ1IjoiY3lsYXgiLCJhIjoiY2l1ZmYxdmdxMDBkbDJvcDRjYzg0eHN1NCJ9.0DSzwUnu3ew-okLTsg8VXA';
@@ -32,39 +34,73 @@ var baseMaps = {
 
 
 // Functions
-function updateMarkBadge(n) {
-    $('#markscount').html(n)
+function reCenter() {
+    mymap.setView(centralLatLng, 13);
+}
+
+function updateWaypointList() {
+    $('#waypoints').val(header);
+    
+    for (var i = 0; i < markers.length; i++) {
+     	var lat = markers[i]._latlng.lat;
+     	var lng = markers[i]._latlng.lng;
+     	$('#waypoints').val($('#waypoints').val() + '#' + i + '\t' + lat + '\t\t' + lng+'\n');
+    }
+}
+
+function updateMarkerBadge(n) {
+    $('#mkcount').html(n)
 }
 
 function onMapClick(e) {
-    count++;
-    updateMarkBadge(count);
-    markers.push(e.latlng);
-    var coordinates = [e.latlng.lat, e.latlng.lng];
-    L.marker(coordinates, {title: '#'+count}).addTo(mymap);
-    if(count != 1) {
-	totalDistance += e.latlng.distanceTo(markers[count-2]);
+    
+    updateMarkerBadge(count + 1);
+    markers.push(L.marker(e.latlng, {title: '#' + count}));
+    markers[count].addTo(mymap);
+    if(count > 0) {
+	totalDistance += e.latlng.distanceTo(markers[count-1]._latlng);
 	$('#distance').val(totalDistance.toFixed(2));
     }
-    var buffer = $('#waypoints').val();
-    $('#waypoints').val(buffer + '#' + count + '\t' + e.latlng.lat + '\t\t' + e.latlng.lng+'\n');
+    updateWaypointList();
+    count++;
 }
 
 function traceRoute() {
-    var polyline = L.polyline(markers, {color: 'red'}).addTo(mymap);    
+    var points = []
+    for (var i = 0; i < markers.length; i++) {
+	points.push(markers[i]._latlng);
+    }
+    routes.push(L.polyline(points, {color: 'red'}).addTo(mymap));
 }
 
-function setAllMap(map) {
-    for (var i = 0; i < markers.length; i++) {
-	markers[i].setMap(map);
+function toggleMarkers() {
+    if($('#mkshow span').hasClass('glyphicon-eye-open')) {
+	$('#mkshow').html('<span class="glyphicon glyphicon-eye-close"></span>');
+	for (var i = 0; i < markers.length; i++) {
+	    markers[i].remove();
+	} 
+    }
+    else {
+	$('#mkshow').html('<span class="glyphicon glyphicon-eye-open"></span>');
+	for (var i = 0; i < markers.length; i++) {
+	    markers[i].addTo(mymap);
+	}
     }
 }
-// Removes the markers from the map, but keeps them in the array.
-function clearMarkers() {
-    setAllMap(null);
+
+function removeLastMarker() {
+    if (markers.length) {
+	markers.pop().remove();
+	count--;
+	updateMarkerBadge(count);
+	updateWaypointList();
+    }
+    if (routes.length)
+	routes.pop().remove();
 }
 
-
-// Main
+// ****** Main ****** //
 L.control.layers(baseMaps).addTo(mymap);
 mymap.on('click', onMapClick);
+
+
