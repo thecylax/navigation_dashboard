@@ -25,21 +25,44 @@
 	  </div>
 	  <div class="panel-body">
 	    <div class="form-group">
-	      <div class="input-group">
-		<input id="address" type="text" class="form-control" aria-describedby="basic-addon1" value="Curitiba, PR">
-	      </div>
-	      <input class="btn btn-primary btn-xs" type="button" value="Localizar" onclick="codeAddress()">
+	      <!-- <div class="input-group"> -->
+	      <!-- 	<input id="address" type="text" class="form-control" aria-describedby="basic-addon1" value="Curitiba, PR"> -->
+	      <!-- 	<input class="btn btn-primary btn-xs" type="button" value="Localizar" onclick="codeAddress()"> -->
+	      <!-- </div> -->
+
+	      <h4>
+		<span class="glyphicon glyphicon-globe"></span>
+		Mapa
+	      </h4>
+	      <input class="btn btn-primary btn-xs" type="button" value="Centralizar" onclick="reCenter()">
 	      <hr>
-	      <h4>Localização</h4>
-	      <div class="input-group">
-		<input type="text" class="form-control" placeholder="Latitude" aria-describedby="basic-addon1">
-	      </div>
-	      <div class="input-group">
-		<input type="text" class="form-control" placeholder="Longitude" aria-describedby="basic-addon1">
-	      </div>
-	      <hr>
-	      <h4>Marcadores <span id="markscount" class="badge"></span></h4>
+
+	      <!-- <hr> -->
+	      <!-- <h4>Localização</h4> -->
+	      <!-- <div class="input-group"> -->
+	      <!-- 	<input type="text" class="form-control" placeholder="Latitude" aria-describedby="basic-addon1"> -->
+	      <!-- </div> -->
+	      <!-- <div class="input-group"> -->
+	      <!-- 	<input type="text" class="form-control" placeholder="Longitude" aria-describedby="basic-addon1"> -->
+	      <!-- </div> -->
+	      <!-- <hr> -->
+	      <h4>
+		<span class="glyphicon glyphicon-map-marker"></span>
+		Marcadores
+		<span id="mkcount" class="badge"></span>
+	      </h4>
 	      <input class="btn btn-primary btn-xs" type="button" value="Traçar rota" onclick="traceRoute()">
+
+	      <button id="mkshow" type="button" class="btn btn-primary btn-xs" data-toggle="button"
+		      title="Mostrar/Esconder marcadores" aria-pressed="false" autocomplete="off" onclick="toggleMarkers()">
+		<span class="glyphicon glyphicon-eye-open"></span>
+	      </button>
+
+	      <button type="button" class="btn btn-primary btn-xs" data-toggle="button"
+		      title="Remover último marcador" aria-pressed="false" autocomplete="off" onclick="removeLastMarker()">
+		<span class="glyphicon glyphicon-minus-sign"></span>
+	      </button>
+
 	      <br>
 	      <label for="sizing-addon3">Distância total</label>
 	      <div class="input-group input-group-sm">
@@ -65,6 +88,10 @@
 	  <div class="panel-heading">
 	    <h3 class="panel-title">
 	      <strong>Mapa</strong>
+	      <button type="button" class="btn btn-default btn-xs" data-toggle="button"  onclick="reCenter()"
+		      title="Centralizar" aria-pressed="false" autocomplete="off">
+		<span class="glyphicon glyphicon-screenshot"></span>
+	      </button>
 	    </h3>
 	  </div>
 	  <div class="panel-body">
@@ -100,7 +127,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     
     <script src="scripts/map.js"></script>
-    <script src="scripts/core.js"></script>
 	
   </body>
 </html>
