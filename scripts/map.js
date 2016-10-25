@@ -55,7 +55,13 @@ function updateMarkerBadge(n) {
 function onMapClick(e) {
     
     updateMarkerBadge(count + 1);
-    markers.push(L.marker(e.latlng, {title: '#' + count}));
+    markers.push(
+	L.marker(e.latlng, {title: '#' + count})
+	    .bindTooltip('#'+count, {
+		permanent: true,
+		direction: 'auto'
+	    })	    
+    );
     markers[count].addTo(mymap);
     if(count > 0) {
 	totalDistance += e.latlng.distanceTo(markers[count-1]._latlng);
@@ -71,6 +77,12 @@ function traceRoute() {
 	points.push(markers[i]._latlng);
     }
     routes.push(L.polyline(points, {color: 'red'}).addTo(mymap));
+}
+
+function toggleTooltips() {
+    for (var i = 0; i < markers.length; i++) {
+	markers[i].toggleTooltip();
+    }
 }
 
 function toggleMarkers() {

@@ -54,19 +54,29 @@
 	      <input class="btn btn-primary btn-xs" type="button" value="Traçar rota" onclick="traceRoute()">
 
 	      <button id="mkshow" type="button" class="btn btn-primary btn-xs" data-toggle="button"
-		      title="Mostrar/Esconder marcadores" aria-pressed="false" autocomplete="off" onclick="toggleMarkers()">
+		      title="Mostrar/Esconder marcadores" aria-pressed="false" autocomplete="off"
+		      onclick="toggleMarkers()">
 		<span class="glyphicon glyphicon-eye-open"></span>
 	      </button>
 
 	      <button type="button" class="btn btn-primary btn-xs" data-toggle="button"
-		      title="Remover último marcador" aria-pressed="false" autocomplete="off" onclick="removeLastMarker()">
+		      title="Mostrar/Esconder tags" aria-pressed="false" autocomplete="off"
+		      onclick="toggleTooltips()">
+		<span class="glyphicon glyphicon-tags"></span>
+	      </button>
+	      
+	      <button type="button" class="btn btn-primary btn-xs" data-toggle="button"
+		      title="Remover último marcador" aria-pressed="false" autocomplete="off"
+		      onclick="removeLastMarker()">
 		<span class="glyphicon glyphicon-minus-sign"></span>
+
 	      </button>
 
 	      <br>
 	      <label for="sizing-addon3">Distância total</label>
 	      <div class="input-group input-group-sm">
-		<input id="distance" type="text" class="form-control" placeholder="0" aria-describedby="sizing-addon3" readonly="readonly">
+		<input id="distance" type="text" class="form-control"
+		       placeholder="0" aria-describedby="sizing-addon3" readonly="readonly">
 		<span class="input-group-addon" id="sizing-addon3">m</span>
 	      </div>
 	      
