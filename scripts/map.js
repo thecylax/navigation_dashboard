@@ -100,15 +100,34 @@ function toggleMarkers() {
     }
 }
 
-function removeLastMarker() {
-    if (markers.length) {
-	markers.pop().remove();
-	count--;
+function removeMarker(option) {
+    if (option == 'all') {
+	for (var i = 0; i < markers.length; i++) {
+	    markers[i].remove();
+	}
+	for (var i = 0; i < routes.length; i++) {
+	    routes[i].remove();
+	}
+	markers = [];
+	routes = [];
+	$('#waypoints').val(header);
+	count = 0;
 	updateMarkerBadge(count);
-	updateWaypointList();
+	return;
     }
-    if (routes.length)
-	routes.pop().remove();
+
+    if (option == 'last') {
+	if (markers.length) {
+	    markers.pop().remove();
+	    count--;
+	    updateMarkerBadge(count);
+	    updateWaypointList();
+	}
+	if (routes.length) {
+	    routes.pop().remove();
+	    traceRoute();
+	}
+    }
 }
 
 // ****** Main ****** //

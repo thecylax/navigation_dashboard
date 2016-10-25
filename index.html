@@ -67,9 +67,14 @@
 	      
 	      <button type="button" class="btn btn-primary btn-xs" data-toggle="button"
 		      title="Remover último marcador" aria-pressed="false" autocomplete="off"
-		      onclick="removeLastMarker()">
+		      onclick="removeMarker('last')">
 		<span class="glyphicon glyphicon-minus-sign"></span>
+	      </button>
 
+	      <button type="button" class="btn btn-primary btn-xs" data-toggle="button"
+		      title="Limpar" aria-pressed="false" autocomplete="off"
+		      onclick="removeMarker('all')">
+		<span class="glyphicon glyphicon-refresh"></span>
 	      </button>
 
 	      <br>
